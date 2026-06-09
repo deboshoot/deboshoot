@@ -9,6 +9,9 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
+// IMPORT VERCEL ANALYTICS
+import { Analytics } from "@vercel/analytics/react";
+
 import appCss from "../styles.css?url";
 // 1. IMPORTIAMO LA FAVICON DA ASSETS
 import faviconUrl from "../assets/favicon.png";
@@ -126,6 +129,8 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />
+      {/* VERCEL ANALYTICS */}
+      <Analytics />
     </QueryClientProvider>
   );
 }
