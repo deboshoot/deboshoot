@@ -85,7 +85,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Shooting cinematografici, collaborazioni e ritratti d'autore." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      // 2. CODICE DI VERIFICA GOOGLE (Incolla qui la stringa segreta della Search Console)
+      // 2. CODICE DI VERIFICA GOOGLE
       { name: "google-site-verification", content: "es9v09423jvqZPfeZHI7lrXCLjnXtxUl1ieJd0JCf2k" },
     ],
     links: [
@@ -115,7 +115,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         {children}
         <Scripts />
-      </head>
+      </body>
     </html>
   );
 }
