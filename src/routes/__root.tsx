@@ -10,6 +10,8 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+// 1. IMPORTIAMO LA FAVICON DA ASSETS
+import faviconUrl from "../assets/favicon.png";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -83,9 +85,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Shooting cinematografici, collaborazioni e ritratti d'autore." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      // 2. CODICE DI VERIFICA GOOGLE (Incolla qui la stringa segreta della Search Console)
+      { name: "google-site-verification", content: "es9v09423jvqZPfeZHI7lrXCLjnXtxUl1ieJd0JCf2k" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      // 3. COLLEGAMENTO LOGO/FAVICON PER I RISULTATI DI RICERCA
+      { rel: "icon", type: "image/png", href: faviconUrl },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -109,7 +115,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         {children}
         <Scripts />
-      </body>
+      </head>
     </html>
   );
 }
@@ -119,7 +125,6 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>
   );
