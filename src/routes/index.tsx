@@ -55,6 +55,7 @@ const brands = [
   { name: "creator" },
 ];
 
+
 // SVG of a film strip ribbon, used as repeating background image
 const filmStripSVG = encodeURIComponent(
   `<svg xmlns='http://www.w3.org/2000/svg' width='240' height='120' viewBox='0 0 240 120'>
@@ -90,7 +91,15 @@ function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* ====== HERO ====== */}
-      <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden grain">
+      <section 
+        className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden grain"
+        style={{
+          backgroundImage: `url(${aboutImg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
         {/* 3D animated film ribbons fullscreen */}
         <div
           className="absolute inset-0 z-0"
@@ -98,23 +107,26 @@ function Index() {
         >
           <div className="absolute inset-0 ribbon-float">
             <FilmRibbon
-              className="left-[-20%] top-[20%] w-[220%] h-[100px] opacity-45"
+              className="left-[-20%] top-[20%] w-[220%] h-[100px]"
+              style={{ opacity: 0.08 }}
             />
           </div>
           <div className="absolute inset-0 ribbon-float-2">
             <FilmRibbon
-              className="left-[-30%] top-[55%] w-[230%] h-[90px] opacity-35"
+              className="left-[-30%] top-[55%] w-[230%] h-[90px]"
+              style={{ opacity: 0.06 }}
             />
           </div>
           <div className="absolute inset-0 ribbon-float" style={{ animationDuration: "22s", animationDelay: "-7s" }}>
             <FilmRibbon
-              className="left-[-15%] top-[78%] w-[210%] h-[70px] opacity-25"
+              className="left-[-15%] top-[78%] w-[210%] h-[70px]"
+              style={{ opacity: 0.04 }}
             />
           </div>
         </div>
 
         {/* Title */}
-        <div className="relative z-10 text-center px-6 float-up">
+        <div className="relative z-10 text-center px-6 float-up" style={{ marginTop: '-27rem' }}>
           <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl tracking-tight text-foreground">
             Deboshoot
           </h1>
@@ -188,6 +200,7 @@ function Index() {
             ))}
           </div>
         </div>
+
       </section>
 
       {/* ====== SERVICES ====== */}
@@ -199,53 +212,22 @@ function Index() {
           </h2>
         </div>
 
-        {/* Hourly Rates Section */}
+        {/* Pricing Information */}
         <div className="max-w-4xl mx-auto mb-16 bg-gradient-to-br from-stone-50 to-white rounded-3xl shadow-lg p-8 md:p-12 border border-border/50">
-          <h3 className="text-2xl md:text-3xl font-display font-bold mb-4">Tariffe Orarie: Massima Flessibilità</h3>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-8">
-            Hai un progetto particolare in mente, ti serve un servizio veloce o vuoi semplicemente fare una prova? Puoi prenotarmi a ore. Nessun pacchetto fisso, decidi tu il tempo necessario. Più ore passiamo a scattare insieme, più la tariffa si abbassa:
+          <h3 className="text-2xl md:text-3xl font-display font-bold mb-6">Quali sono i prezzi?</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+            Concordiamo tutto insieme in base a quello che vuoi fare, al tempo che ci serve e al risultato che vuoi ottenere. Tu ci metti l'idea, al budget ci pensiamo insieme.
           </p>
-          <div className="flex flex-col gap-3 mb-8">
-            <button 
-              onClick={() => document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group relative cursor-pointer overflow-hidden bg-white rounded-xl p-4 border border-border hover:border-black transition-all duration-300 hover:shadow-md text-left"
-            >
-              <div className="flex items-center justify-between">
-                <div className="text-sm font-display font-bold text-foreground">1 Ora</div>
-                <div className="text-lg font-bold text-black group-hover:scale-110 transition-transform duration-300">€80</div>
-              </div>
-            </button>
-            <button 
-              onClick={() => document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group relative cursor-pointer overflow-hidden bg-white rounded-xl p-4 border border-border hover:border-black transition-all duration-300 hover:shadow-md text-left"
-            >
-              <div className="flex items-center justify-between">
-                <div className="text-sm font-display font-bold text-foreground">2 Ore</div>
-                <div className="text-lg font-bold text-black group-hover:scale-110 transition-transform duration-300">€150</div>
-              </div>
-            </button>
-            <button 
-              onClick={() => document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group relative cursor-pointer overflow-hidden bg-white rounded-xl p-4 border border-border hover:border-black transition-all duration-300 hover:shadow-md text-left"
-            >
-              <div className="flex items-center justify-between">
-                <div className="text-sm font-display font-bold text-foreground">3 Ore</div>
-                <div className="text-lg font-bold text-black group-hover:scale-110 transition-transform duration-300">€210</div>
-              </div>
-            </button>
-            <button 
-              onClick={() => document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group relative cursor-pointer overflow-hidden bg-white rounded-xl p-4 border border-border hover:border-black transition-all duration-300 hover:shadow-md text-left"
-            >
-              <div className="flex items-center justify-between">
-                <div className="text-sm font-display font-bold text-foreground">4 Ore</div>
-                <div className="text-lg font-bold text-black group-hover:scale-110 transition-transform duration-300">€290</div>
-              </div>
-            </button>
-          </div>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Hai bisogno di me per mezza giornata, una giornata intera o per un progetto speciale? Scrivimi e creiamo un preventivo su misura per te.
+          <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+            Vuoi parlare con noi? Vai nella sezione contatti qui sotto, scrivici e iniziamo il tuo progetto insieme.
           </p>
+          <button 
+            onClick={() => document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' })}
+            className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-lg hover:bg-black/80 transition-colors font-semibold"
+          >
+            Vai ai contatti
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
 
         {/* Two Main Cards */}
